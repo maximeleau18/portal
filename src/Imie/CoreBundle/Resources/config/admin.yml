@@ -1,0 +1,24 @@
+services:
+    sonata.admin.student:
+        class: Imie\CoreBundle\Admin\StudentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Common", label: "Student" }
+        arguments:
+            - ~
+            - Imie\CoreBundle\Entity\Student
+            - ImieCoreBundle:StudentAdmin
+        calls:
+            - [ setTranslationDomain, [ImieCoreBundle, ], ]
+
+    sonata.admin.teacher:
+        class: Imie\CoreBundle\Admin\TeacherAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Common", label: "Teacher" }
+        arguments:
+            - ~
+            - Imie\CoreBundle\Entity\Teacher
+            - ImieCoreBundle:TeacherAdmin
+        calls:
+            - [ setTranslationDomain, [ImieCoreBundle, ], ]
+
+

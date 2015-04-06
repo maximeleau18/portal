@@ -1,0 +1,56 @@
+<?php
+/**************************************************************************
+ * Grade.php, IMIE evalute
+ *
+ * Maxime Léau Copyright 2015
+ * Description :
+ * Author(s) : Maxime Léau <maxime.leau@imie-rennes.fr>
+ * Licence : All right reserved.
+ * Last update : April 6, 2015
+ *
+ **************************************************************************/
+namespace Imie\EvaluateBundle\Entity;
+
+use Imie\CoreBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Grade entity
+ * @ORM\Entity
+ * @ORM\Table(name="grade")
+ * @ORM\Entity(repositoryClass="Imie\EvaluateBundle\Repository\GradeRepository")
+ */
+class Grade
+{
+	/**
+	 * Grade ID
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 * @var integer
+	 */
+	protected $id;
+	
+	/**
+	 * Grade Value
+	 * @ORM\Column(type="decimal")
+	 * @var decimal
+	 */
+	protected $value;
+	
+	/**
+	 * Grade Test
+	 * @ORM\ManyToOne(targetEntity="Imie\EvaluateBundle\Entity\Test", inversedBy="grades")
+	 * @ORM\JoinColumn(name="test_id", referencedColumnName="id")
+	 * @var \Imie\EvaluateBundle\Entity\Test
+	 */
+	protected $test;
+	
+	/**
+	 * Grade Student
+	 * @ORM\ManyToOne(targetEntity="Imie\CoreBundle\Entity\Student", inversedBy="grades")
+	 * @ORM\JoinColumn(name="student_id", referencedColumnName="id") 
+	 * @var \Imie\CoreBundle\Entity\Student
+	 */
+	protected $student;
+}

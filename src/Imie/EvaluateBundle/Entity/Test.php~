@@ -1,0 +1,101 @@
+<?php
+/**************************************************************************
+ * Test.php, IMIE evalute
+ *
+ * Maxime Léau Copyright 2015
+ * Description :
+ * Author(s) : Maxime Léau <maxime.leau@imie-rennes.fr>
+ * Licence : All right reserved.
+ * Last update : April 6, 2015
+ *
+ **************************************************************************/
+namespace Imie\EvaluateBundle\Entity;
+
+use Imie\CoreBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Imie\CoreBundle\ImieCoreBundle;
+
+/**
+ * Test entity
+ * @ORM\Entity
+ * @ORM\Table(name="test")
+ * @ORM\Entity(repositoryClass="Imie\EvaluateBundle\Repository\TestRepository")
+ */
+class Test
+{
+	/**
+	 * Test ID
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 * @var integer
+	 */
+	protected $id;
+	
+	/**
+	 * Test Libel
+	 * @ORM\Column(type="string", length=255)
+	 * @var string
+	 */
+	protected $libel;
+	
+	/**
+	 * Test Factor
+	 * @ORM\Column(type="integer")
+	 * @var integer
+	 */
+	protected $factor;
+	
+	/**
+	 * Test GradesAverage
+	 * @ORM\Column(name="grades_average", type="decimal")
+	 * @var decimal
+	 */
+	protected $gradesAverage;
+	
+	/**
+	 * Test MaxGrade
+	 * @ORM\Column(name="max_grade", type="decimal")
+	 * @var decimal
+	 */
+	protected $maxGrade;
+	
+	/**
+	 * Test MinGrade
+	 * @ORM\Column(name="min_grade", type="decimal")
+	 * @var decimal
+	 */
+	protected $minGrade;
+	
+	/**
+	 * Test Created date
+	 * @ORM\Column(name="created_at", type="datetime")
+	 * @var \DateTime
+	 */
+	protected $createdAt;	
+	
+	/**
+	 * Test Grades Collection
+	 * @ORM\OneToMany(targetEntity="Imie\EvaluateBundle\Entity\Grade", mappedBy="grade", cascade={"persist"})
+	 * @var \Doctrine\Common\Collections\Collection
+	 */
+	protected $grades;
+	
+	/**
+	 * Test Classe
+	 * @ORM\ManyToOne(targetEntity="Imie\EvaluateBundle\Entity\Classe", inversedBy="tests")
+	 * @ORM\JoinColumn(name="classe_id", referencedColumnName="id")
+	 * @var \Imie\EvaluateBundle\Entity\Classe
+	 */
+	protected $classe;
+	
+	/**
+	 * Test Teacher
+	 * @ORM\ManyToOne(targetEntity="Imie\CoreBundle\Entity\Teacher", inversedBy="tests")
+	 * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+	 * @var \Imie\CoreBundle\Entity\Teacher
+	 */
+	protected $teacher;
+}
+
+ 

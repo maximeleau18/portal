@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Test</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Libel</th>
+                <td>{{ entity.libel }}</td>
+            </tr>
+            <tr>
+                <th>Factor</th>
+                <td>{{ entity.factor }}</td>
+            </tr>
+            <tr>
+                <th>Gradesaverage</th>
+                <td>{{ entity.gradesAverage }}</td>
+            </tr>
+            <tr>
+                <th>Maxgrade</th>
+                <td>{{ entity.maxGrade }}</td>
+            </tr>
+            <tr>
+                <th>Mingrade</th>
+                <td>{{ entity.minGrade }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('test') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('test_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

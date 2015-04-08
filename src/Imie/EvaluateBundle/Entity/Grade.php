@@ -39,6 +39,13 @@ class Grade
 	protected $value;
 	
 	/**
+	 * Grade Comment
+	 * @ORM\Column(type="text")
+	 * @var text
+	 */
+	protected $comment;
+	
+	/**
 	 * Grade Test
 	 * @ORM\ManyToOne(targetEntity="Imie\EvaluateBundle\Entity\Test", inversedBy="grades")
 	 * @ORM\JoinColumn(name="test_id", referencedColumnName="id")

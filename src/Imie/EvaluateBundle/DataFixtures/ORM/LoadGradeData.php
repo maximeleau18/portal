@@ -26,7 +26,8 @@ class LoadGradeData extends AbstractFixture implements OrderedFixtureInterface
     /**
      * (non-PHPdoc)
      * @see \Doctrine\Common\DataFixtures\FixtureInterface::load()
-     */    public function load(ObjectManager $manager)
+     */    
+     public function load(ObjectManager $manager)
     {
     	$this->manager = $manager;
     	

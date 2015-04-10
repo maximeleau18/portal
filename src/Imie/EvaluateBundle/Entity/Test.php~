@@ -337,27 +337,4 @@ class Test
     {
         return $this->teacher;
     }
-
-    /**
-     * Set lockedAt
-     *
-     * @param \DateTime $lockedAt
-     * @return Test
-     */
-    public function setLockedAt($lockedAt)
-    {
-        $this->lockedAt = $lockedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get lockedAt
-     *
-     * @return \DateTime 
-     */
-    public function getLockedAt()
-    {
-        return $this->lockedAt;
-    }
 }

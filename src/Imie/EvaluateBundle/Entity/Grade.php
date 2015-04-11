@@ -13,15 +13,12 @@ namespace Imie\EvaluateBundle\Entity;
 
 use Imie\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 
 /**
  * Grade entity
  * @ORM\Entity
  * @ORM\Table(name="grade")
  * @ORM\Entity(repositoryClass="Imie\EvaluateBundle\Repository\GradeRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Grade
 {
@@ -36,8 +33,8 @@ class Grade
 	
 	/**
 	 * Grade Value
-	 * @ORM\Column(type="decimal")
-	 * @var decimal
+	 * @ORM\Column(type="float")
+	 * @var float
 	 */
 	protected $value;
 	
@@ -164,48 +161,5 @@ class Grade
     public function getComment()
     {
         return $this->comment;
-    }
-    
-    /**
-     * @ORM\PostPersist()
-     */
-    public function updateTestGradesAverage() 
-    {
-    	
-    }
-    
-    /**
-     * @ORM\PostPersist
-     */
-    public function updateTestMaxGrade(LifecycleEventArgs  $args)
-    {   	 
-    	if (!$this->test){
-    		$grades = $this->test->getGrades();
-    		
-    		if (!$grades){
-	    		foreach ($grades as $value) {
-	    			$maxGrade = 0;
-	    			
-	    			if ($value->value > $maxGrade){
-		    				$maxGrade = $value->value;
-		    			}
-	    		} ($grades);
-    		}
-    		
-    		
-    	 	$this->test->setMaxGrade($maxGrade);
-    	 	$em = $this->getDoctrine()->getEntityManager();
-    	 	$test = $em->find(\Imie\EvaluateBundle\Entity\Test, $this->getTest()->getId());
-        	$em->persist($test);
-        	$em->flush();
-    	}
-    }
-    
-    /**
-     * @ORM\PostPersist()
-     */
-    public function updateTestMinGrade()
-    {
-    	 
     }
 }

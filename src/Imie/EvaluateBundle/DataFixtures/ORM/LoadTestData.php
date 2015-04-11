@@ -31,12 +31,10 @@ class LoadTestData extends AbstractFixture implements OrderedFixtureInterface
     {
     	$this->manager = $manager;
     	
-    	// Make Tests
-    	$test01 = $this->makeTest("Test de connaissances", 1, new \DateTime(), new \DateTime('+60 days'), $this->getReference("classe-01"));
+    	// Make Tests    	
+    	$test01 = $this->makeTest("Test de connaissances", 1.0, new \DateTime(), new \DateTime('+60 days'), $this->getReference("classe-01"));
     	
-
-    	$this->manager->persist($test01);
-    	
+    	$this->manager->persist($test01);    	
     	$this->manager->flush();
     	
     	$this->setReference('test-01', $test01);

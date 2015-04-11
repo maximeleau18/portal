@@ -41,29 +41,29 @@ class Test
 	
 	/**
 	 * Test Factor
-	 * @ORM\Column(type="integer")
-	 * @var integer
+	 * @ORM\Column(type="float")
+	 * @var float
 	 */
 	protected $factor;
 	
 	/**
 	 * Test GradesAverage
-	 * @ORM\Column(name="grades_average", type="decimal", nullable=true)
-	 * @var decimal
+	 * @ORM\Column(name="grades_average", type="float", nullable=true)
+	 * @var float
 	 */
 	protected $gradesAverage;
 	
 	/**
 	 * Test MaxGrade
-	 * @ORM\Column(name="max_grade", type="decimal", nullable=true)
-	 * @var decimal
+	 * @ORM\Column(name="max_grade", type="float", nullable=true)
+	 * @var float
 	 */
 	protected $maxGrade;
 	
 	/**
 	 * Test MinGrade
-	 * @ORM\Column(name="min_grade", type="decimal", nullable=true)
-	 * @var decimal
+	 * @ORM\Column(name="min_grade", type="float", nullable=true)
+	 * @var float
 	 */
 	protected $minGrade;
 	
